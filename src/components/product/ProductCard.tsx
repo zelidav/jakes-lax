@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Product } from "@/types";
 import { formatPrice, cn } from "@/lib/utils";
-import { ProductImagePlaceholder } from "@/components/ui/ProductImage";
+import { ProductArt, ProductImagePlaceholder } from "@/components/ui/ProductImage";
 import { useCart } from "@/lib/cart-context";
 
 export function ProductCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const [hoverSize, setHoverSize] = useState<string | null>(null);
   const { add } = useCart();
-  const tone = product.collection === "drop-01" ? "dark" : product.slogan.length > 25 ? "light" : "cream";
+  const tone = product.artTone ?? (product.collection === "drop-01" ? "dark" : product.slogan.length > 25 ? "light" : "cream");
 
   const quickAdd = (size: string) => {
     add({
@@ -21,7 +21,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
       price: product.price,
       size: size as any,
       color: product.colors[0].name,
-      image: product.images[0],
+      image: product.artImage || product.images[0],
       quantity: 1,
     });
   };
@@ -29,7 +29,16 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   return (
     <div className="group relative">
       <Link href={`/products/${product.slug}`} className="block relative overflow-hidden">
-        <ProductImagePlaceholder slogan={product.slogan} tone={tone} />
+        {product.artImage ? (
+          <ProductArt
+            src={product.artImage}
+            alt={`${product.name} — ${product.slogan}`}
+            tone={tone}
+            priority={priority}
+          />
+        ) : (
+          <ProductImagePlaceholder slogan={product.slogan} tone={tone} />
+        )}
         <div className="absolute top-3 left-3 flex gap-2">
           {product.bestSeller && <span className="tag bg-ink text-cream border-ink">Best Seller</span>}
           {product.collection === "drop-01" && (

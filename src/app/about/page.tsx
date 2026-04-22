@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { SloganCard } from "@/components/ui/SloganCard";
 import { ArrowRightIcon } from "@/components/ui/Icons";
 
@@ -36,6 +37,16 @@ export default function AboutPage() {
             <h2 className="display text-5xl md:text-6xl leading-[0.92]">
               A Small Apparel Brand<br />For A Big Dumb Joke.
             </h2>
+            <div className="mt-8 relative aspect-[4/5] w-full overflow-hidden border border-ink/10 hidden lg:block">
+              <Image
+                src="/hero/scene-missing-shot-1.png"
+                alt="Lacrosse player shooting — poster art"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+                unoptimized
+              />
+            </div>
           </div>
           <div className="space-y-6 text-ink/80 text-lg leading-relaxed">
             <p>

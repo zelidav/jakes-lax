@@ -27,7 +27,7 @@ export function ProductDetail({ product, related }: { product: Product; related:
       price: product.price,
       size,
       color,
-      image: product.images[0],
+      image: product.artImage || product.images[0],
       quantity: qty,
     });
     setAdded(true);
@@ -54,7 +54,12 @@ export function ProductDetail({ product, related }: { product: Product; related:
           <span>{product.name}</span>
         </nav>
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16">
-          <ProductGallery slogan={product.slogan} images={product.images} />
+          <ProductGallery
+            slogan={product.slogan}
+            alt={`${product.name} — ${product.slogan}`}
+            artImage={product.artImage}
+            artTone={product.artTone}
+          />
 
           <div className="lg:sticky lg:top-32 lg:self-start">
             <div className="flex items-center gap-2 mb-4">

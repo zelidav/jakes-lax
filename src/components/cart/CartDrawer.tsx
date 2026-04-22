@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/utils";
 import { CloseIcon, MinusIcon, PlusIcon, ArrowRightIcon } from "@/components/ui/Icons";
-import { ProductImagePlaceholder } from "@/components/ui/ProductImage";
+import { ProductArt, ProductImagePlaceholder } from "@/components/ui/ProductImage";
 import { createCheckout } from "@/lib/integrations";
 
 export function CartDrawer() {
@@ -69,7 +69,11 @@ export function CartDrawer() {
                     onClick={close}
                     className="shrink-0 w-20 h-20 overflow-hidden"
                   >
-                    <ProductImagePlaceholder slogan={line.slogan} tone="dark" />
+                    {line.image && line.image.startsWith("/") && !line.image.endsWith("/front.jpg") ? (
+                      <ProductArt src={line.image} alt={line.name} tone="dark" />
+                    ) : (
+                      <ProductImagePlaceholder slogan={line.slogan} tone="dark" />
+                    )}
                   </Link>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-3">

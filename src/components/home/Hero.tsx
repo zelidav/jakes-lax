@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRightIcon, InstagramIcon } from "@/components/ui/Icons";
 
 export function Hero() {
@@ -52,25 +53,24 @@ export function Hero() {
           {/* Visual */}
           <div className="relative">
             <div className="relative aspect-[4/5] w-full bg-ink overflow-hidden">
-              {/* When real hero photo is ready, drop into /public/hero/hero.jpg and swap in <Image /> */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#1a1a1a,#0a0a0a_70%)]" />
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_60%,#C8FF2C_0%,transparent_40%)]" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-10">
-                <span className="text-[10px] tracking-[0.4em] uppercase text-cream/60 mb-6">
-                  Back Print — Drop 01
-                </span>
-                <span className="display text-5xl sm:text-6xl md:text-7xl text-cream leading-[0.92] text-balance">
-                  Dirty Balls<br />Don&apos;t Fly<br />Straight.
-                </span>
-                <span className="mt-8 text-[10px] tracking-[0.4em] uppercase text-cream/60">
-                  Heavyweight Cotton · Garment Dyed
-                </span>
+              <Image
+                src="/hero/scene-dirty-helmet.png"
+                alt="Dirty Balls Don't Fly Straight — back print illustration"
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-cream/80">
+                <span className="h-1 w-8 bg-field" /> Drop 01 · Heavy Cotton
               </div>
-              <div className="absolute bottom-4 left-4 flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-cream/50">
-                <span className="h-1 w-8 bg-field" /> 100% Cotton
+              <div className="absolute top-4 right-4 text-[10px] tracking-[0.3em] uppercase text-cream/80 bg-ink/50 px-2 py-1">
+                Back Print
               </div>
             </div>
-            <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-field text-ink px-4 py-3 rotate-3">
+            <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-field text-ink px-4 py-3 rotate-3 shadow-lg">
               <p className="display text-xl leading-none">$42</p>
               <p className="text-[9px] tracking-widest uppercase mt-0.5">Free shipping $75+</p>
             </div>

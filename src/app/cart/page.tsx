@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/utils";
 import { MinusIcon, PlusIcon, ArrowRightIcon } from "@/components/ui/Icons";
-import { ProductImagePlaceholder } from "@/components/ui/ProductImage";
+import { ProductArt, ProductImagePlaceholder } from "@/components/ui/ProductImage";
 import { createCheckout } from "@/lib/integrations";
 
 export default function CartPage() {
@@ -37,7 +37,11 @@ export default function CartPage() {
                   className="py-6 grid grid-cols-[80px_1fr_auto] sm:grid-cols-[120px_1fr_auto] gap-4 sm:gap-6"
                 >
                   <Link href={`/products/${line.slug}`} className="block aspect-square overflow-hidden">
-                    <ProductImagePlaceholder slogan={line.slogan} tone="dark" />
+                    {line.image && line.image.startsWith("/") && !line.image.endsWith("/front.jpg") ? (
+                      <ProductArt src={line.image} alt={line.name} tone="dark" />
+                    ) : (
+                      <ProductImagePlaceholder slogan={line.slogan} tone="dark" />
+                    )}
                   </Link>
                   <div className="min-w-0">
                     <Link href={`/products/${line.slug}`} className="font-semibold hover:underline">

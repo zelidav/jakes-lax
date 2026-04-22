@@ -20,6 +20,10 @@ export type Product = {
   sizes: Size[];
   colors: Color[];
   images: string[];
+  /** Primary art/graphic that would print on the back of the tee. */
+  artImage?: string;
+  /** Visual tone behind the art — affects framing color. */
+  artTone?: "dark" | "light" | "cream";
   collection: Collection;
   tags: string[];
   featured: boolean;

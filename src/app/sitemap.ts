@@ -3,7 +3,7 @@ import { products } from "@/data/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://jakeslax.com";
-  const pages = ["", "/shop", "/about", "/faq", "/contact", "/instagram", "/cart", "/account/login", "/account/signup"];
+  const pages = ["", "/shop", "/generator", "/about", "/faq", "/contact", "/instagram", "/cart", "/account/login", "/account/signup"];
   const staticEntries = pages.map((p) => ({
     url: `${base}${p}`,
     lastModified: new Date(),

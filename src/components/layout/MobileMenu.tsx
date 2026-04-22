@@ -11,6 +11,7 @@ type Props = {
 
 const NAV = [
   { href: "/shop", label: "Shop" },
+  { href: "/generator", label: "Jake's Lax It Up" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/instagram", label: "Instagram" },

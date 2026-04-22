@@ -31,9 +31,9 @@ jobs:
       - name: Build static export
         env:
           STATIC_EXPORT: "true"
-          # Project-page base path. If you rename the repo or host at the
-          # user-page URL (zelidav.github.io), update or clear this.
-          NEXT_PUBLIC_BASE_PATH: /jakes-lax
+          # Served from https://jakeslax.com via custom domain (public/CNAME).
+          # If you revert to the project-page URL, set this to /jakes-lax.
+          NEXT_PUBLIC_BASE_PATH: ""
         run: npm run build
 
       - name: Configure Pages
